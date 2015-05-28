@@ -4,7 +4,7 @@ Custom Page & Static Pages fields for OctoberCMS
 
 ## Motivation
 
-Coming from MODX, the only thing I feel that is missing is these custom input fields for templates. In MODX, they were referred to as `template variables`, and they were lovely.
+Coming from MODX, the only thing I feel that is missing is these custom input fields for templates. In MODX, they were referred to as `template variables` and they were lovely.
 
 ## Goals
 * 100% File-based.
