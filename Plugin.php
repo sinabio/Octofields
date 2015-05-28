@@ -17,10 +17,16 @@ class Plugin extends PluginBase
     {
         return [
             'name'        => 'Octofields',
-            'description' => 'No description provided yet...',
+            'description' => 'Template Variables for OctoberCMS',
             'author'      => 'Eein',
-            'icon'        => 'icon-leaf'
+            'icon'        => 'icon-heart'
         ];
+    }
+    public function registerComponents()
+    {
+      return [
+        'Eein\Octofields\Components\Octofield' => 'octofield'
+      ];
     }
 
 }
