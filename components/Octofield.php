@@ -5,6 +5,10 @@ use Cms\Classes\ComponentBase;
 class Octofield extends ComponentBase
 {
 
+    public $value;
+    public $type;
+    public $options;
+
     public function componentDetails()
     {
         return [
@@ -15,9 +19,27 @@ class Octofield extends ComponentBase
 
     public function defineProperties()
     {
-        return [];
+        return [
+          'type' => [
+              'title' => 'Field Type',
+              'description' => 'The Type of field you want to use.',
+              'default' => 'text',
+              'type' => 'dropdown',
+              'options' => [
+                'text' => 'text',
+                'select' => 'select',
+
+              ]
+            ]
+        ];
     }
 
+    public function onRun()
+    {
+      $this->image = $this->page->settings['bannerImage'];
+      $this->alt = $this->page->settings['bannerAlt'];
+    }
+/*
     ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
     ░░░░░░░░░░▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄░░░░░░░░░
     ░░░░░░░░▄▀░░░░░░░░░░░░▄░░░░░░░▀▄░░░░░░░
@@ -32,7 +54,7 @@ class Octofield extends ComponentBase
     ░░░░░░█▀▀█████████▀▀▀▀████████████▀░░░░
     ░░░░░░████▀░░███▀░░░░░░▀███░░▀██▀░░░░░░
     ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-
+*/
     /**
      * Returns a random quote
      */
