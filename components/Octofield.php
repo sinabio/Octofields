@@ -7,6 +7,7 @@ class Octofield extends ComponentBase
 
     public $value;
     public $type;
+    public $fieldLabel;
     public $options;
 
     public function componentDetails()
@@ -20,24 +21,42 @@ class Octofield extends ComponentBase
     public function defineProperties()
     {
         return [
+          'label' => [
+            'title'   => 'Label',
+            'type'    => 'string'
+          ],
           'type' => [
-              'title' => 'Field Type',
-              'description' => 'The Type of field you want to use.',
-              'default' => 'text',
-              'type' => 'dropdown',
+              'title'             => 'Field Type',
+              'description'       => 'The Type of field you want to use.',
+              'default'           => 'text',
+              'type'              => 'dropdown',
+              'showExternalParam' => 'false',
               'options' => [
-                'text' => 'text',
-                'select' => 'select',
-
+                'text'    => 'Text',
+                'number'  => 'Number'
+                // 'textarea' =>'Textarea',
+                // 'richtext' =>'Richtext',
+                // 'dropdown' =>'Dropdown',
+                // 'checkbox' =>'Checkbox',
+                // 'checkboxlist' =>'Checkbox List',
+                // 'codeeditor' =>'Code Editor',
+                // 'markdown' =>'Markdown',
+                // 'hint' =>'Hint',
+                // 'switch' =>'Switch',
+                // 'balloon' =>'Balloon Select',
+                // 'password'=> 'Password / Key'
               ]
-            ]
+          ]
         ];
+
+
     }
 
     public function onRun()
     {
-      $this->image = $this->page->settings['bannerImage'];
-      $this->alt = $this->page->settings['bannerAlt'];
+
+      $this->type = e($this->property('type', 'text'));
+
     }
 /*
     ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
@@ -62,7 +81,7 @@ class Octofield extends ComponentBase
     {
       $quotes = [
           'Too easy...',
-          'Drag to your right and exhale...',
+          'Just drag and exhale...',
           'Liking October so far?',
           'This could be more complicated, but its not.',
           'Expecting it to be harder?',
@@ -70,7 +89,7 @@ class Octofield extends ComponentBase
           'Custom Plugins for every custom field? I think not.',
           'They might need to make the components area smaller.',
           'Front flipping off the easy button.',
-          'Click and drag that way -->'
+
       ];
       $lotto = array_rand($quotes);
       return $quotes[$lotto];
